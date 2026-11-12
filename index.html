@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norman Carl P. Lapitan | Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f9;
+      color: #333333;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #243a52;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #c5d5e4;
+    }
+
+    nav {
+      background-color: white;
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid #dddddd;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      display: inline-block;
+      background-color: #e3edf5;
+      color: #243a52;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 14px;
+      margin: 3px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: #243a52;
+      color: white;
+    }
+
+    .box {
+      display: none;
+      background-color: white;
+      width: 85%;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #dddddd;
+      border-radius: 6px;
+      scroll-margin-top: 70px;
+    }
+
+    .box:target {
+      display: block;
+    }
+
+    #home {
+      display: block;
+      text-align: center;
+    }
+
+    .box:target ~ #home {
+      display: none;
+    }
+
+    h2 {
+      color: #243a52;
+      border-bottom: 2px solid #e3edf5;
+      padding-bottom: 8px;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #e3edf5;
+      margin: 10px auto;
+    }
+
+    pre {
+      background-color: #1e1e2e;
+      color: white;
+      padding: 15px;
+      overflow: auto;
+      font-size: 13px;
+    }
+
+    footer {
+      background-color: #243a52;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Norman Carl P. Lapitan</h1>
+    <p>Personal Portfolio</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#personal">Personal</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#java">Java Code</a>
+  </nav>
+
+  <div class="box" id="personal">
+    <h2>Personal Information</h2>
+    <p><b>Name:</b> Norman Carl P. Lapitan</p>
+    <p><b>Address:</b> Macatcatuit Zone 3, Guimba, Nueva Ecija</p>
+    <p><b>Email:</b> lapitannormancarl@gmail.com</p>
+    <p><b>Contact No.:</b> 09934180487</p>
+    <p>I am a BS Information Technology student at Our Lady of the Sacred Heart College of Guimba, Inc.</p>
+  </div>
+
+  <div class="box" id="education">
+    <h2>Educational Background</h2>
+    <ul>
+      <li><b>College:</b> Our Lady of the Sacred Heart College of Guimba, Inc. - BS Information Technology</li>
+      <li><b>Senior High School:</b> Macatcatuit High School (2024 - 2025)</li>
+      <li><b>Junior High School:</b> Macatcatuit High School (2022 - 2023)</li>
+      <li><b>Elementary:</b> Macatcatuit Elementary School (2018 - 2019)</li>
+    </ul>
+  </div>
+
+  <div class="box" id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Java</li>
+      <li>Problem Solving</li>
+      <li>Teamwork</li>
+    </ul>
+  </div>
+
+  <div class="box" id="java">
+    <h2>Java Code</h2>
+    <p>Final Performance Task (PeTa) - CC102: Travel Expense Tracker</p>
+    <pre>
+import java.util.Scanner;
+public class TravelExpenseTracker {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        double[] expenses = new double[10];
+        double total = 0;
+        double average;
+
+        System.out.println("=== TRAVEL EXPENSE TRACKER ===");
+
+        for (int i = 0; i < 10; i++) {
+
+            while (true) {
+                System.out.print("Enter expense for Trip " + (i + 1) + ": ");
+
+                if (input.hasNextDouble()) {
+                    double amount = input.nextDouble();
+
+                    if (amount >= 0) {
+                        expenses[i] = amount;
+                        total += amount;
+                        break;
+                    } else {
+                        System.out.println("Invalid! Enter nonnegative value.");
+                    }
+
+                } else {
+                    System.out.println("Invalid input! Enter numbers only.");
+                    input.next();
+                }
+            }
+        }
+
+        double highest = expenses[0];
+        double lowest = expenses[0];
+
+        int highestTrip = 0;
+        int lowestTrip = 0;
+
+        for (int i = 1; i < 10; i++) {
+
+            if (expenses[i] > highest) {
+                highest = expenses[i];
+                highestTrip = i;
+            }
+
+            if (expenses[i] < lowest) {
+                lowest = expenses[i];
+                lowestTrip = i;
+            }
+        }
+   
+        average = total / 10;
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = i + 1; j < 10; j++) {
+
+                if (expenses[i] < expenses[j]) {
+                    double temp = expenses[i];
+                    expenses[i] = expenses[j];
+                    expenses[j] = temp;
+                }
+            }
+        }
+
+        System.out.println("\n=== EXPENSE SUMMARY ===");
+
+        System.out.printf("Total Expenses: PHP %.2f%n", total);
+        System.out.printf("Average Expense: PHP %.2f%n", average);
+
+        System.out.println("\nMost Expensive Trip:");
+        System.out.println("Trip " + (highestTrip + 1));
+        System.out.printf("PHP %.2f%n", highest);
+
+        System.out.println("\nLeast Expensive Trip:");
+        System.out.println("Trip " + (lowestTrip + 1));
+        System.out.printf("PHP %.2f%n", lowest);
+
+        System.out.println("\n=== EXPENSES (DESCENDING ORDER) ===");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.printf("Index %d: PHP %.2f%n",
+                    i, expenses[i]);
+        }
+        
+        input.close();
+    }
+}
+    </pre>
+  </div>
+
+  <div class="box" id="home">
+    <h2>Welcome to My Portfolio</h2>
+    <img src="norman.jpg" alt="Norman Carl P. Lapitan">
+    <p>Hello, welcome to my personal website.</p>
+    <p>Here you can learn more about me and see my Java project.</p>
+  </div>
+
+  <footer>
+    <p>2026 Norman Carl P. Lapitan | Personal Portfolio</p>
+  </footer>
+
+</body>
+</html>
